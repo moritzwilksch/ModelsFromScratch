@@ -12,3 +12,6 @@ Code for various ML-Models from scratch.
 
 ## MLP-Backprop
 - implements unregularized backpropagation algorithm for a single hidden layer MLP
+
+## L2-Regularized Logistic Regression
+- implements l2-regularized binary logistic regression optimized through gradient descent
