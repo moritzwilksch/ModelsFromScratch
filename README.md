@@ -15,3 +15,6 @@ Code for various ML-Models from scratch.
 
 ## L2-Regularized Logistic Regression
 - implements l2-regularized binary logistic regression optimized through gradient descent
+
+## Gaussian Processes
+- simple example for a GP on 5 sample points estimating mean & std for two now values using the closed form solution

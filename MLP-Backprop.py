@@ -45,6 +45,10 @@ def partial_l_w1(y, o, x, w2):
     )
 
 
+def partial_l_w2(y, o, x, w1):
+    return (y-o) * pi(w1.T @ x)
+
+
 def predict(x: np.ndarray, w1: np.ndarray, w2: np.ndarray) -> np.ndarray:
     """Given learned weights and input x, predicts y"""
     return np.matmul(
@@ -55,9 +59,11 @@ def predict(x: np.ndarray, w1: np.ndarray, w2: np.ndarray) -> np.ndarray:
 
 # %%
 w1 = np.array([[1, 2, 3], [4, 5, 6], [3, 2, 1], [9, 8, 1], [4, 2, 1]]) / 10
+#w1 = np.zeros((5,3))
 w2 = np.array([1, 2, 3]).reshape(-1, 1) / 10
+#w2 = np.zeros((3, 1))
 x = np.array([1, 2, 3, 4, 5]).reshape(-1, 1) / 10
-y = np.array([0])
+y = np.array([0.42])
 
 o = predict(x, w1, w2)
 print(f"predict = {o}")
@@ -65,11 +71,12 @@ print(partial_l_w1(y, o, x, w2))
 
 # %%
 loss = []
-for i in range(1000):
+for i in range(10):
     o = predict(x, w1, w2)
     loss.append(l(y, o).item())
     print(f"Prediction = {o.item()} ---> loss = {loss[-1]}")
-    w1 += 4 * partial_l_w1(y, o, x, w2).T
+    w1 += partial_l_w1(y, o, x, w2).T
+    w2 += partial_l_w2(y, o, x, w1)
 sns.lineplot(x=range(len(loss)), y=loss)
 plt.title('Loss per iteration')
 plt.show()
