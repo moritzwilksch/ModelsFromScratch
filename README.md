@@ -18,3 +18,6 @@ Code for various ML-Models from scratch.
 
 ## Gaussian Processes
 - simple example for a GP on 5 sample points estimating mean & std for two now values using the closed form solution
+
+## Bayesian Inference using MCMC
+- Estimation of posterior distribution of a parameter using manually implemented simple version of Markov Chain Monte Carlo sampling
